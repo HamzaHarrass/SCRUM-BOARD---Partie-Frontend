@@ -10,6 +10,8 @@
     background-position: right bottom;
 }
 #button{
-     background-color: #E94560; 
-    
+     background-color: #E94560;
+}
+#color{
+    background-image: linear-gradient(#E94560,#533483);
 }
