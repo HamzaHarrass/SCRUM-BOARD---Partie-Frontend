@@ -1,0 +1,15 @@
+.pace {
+    display: none;
+}
+
+.main-style {
+    min-height: 100vh;
+    /* background: url(../img/cover/cover-scrum-board.png) no-repeat fixed; */
+    background-image: linear-gradient(#16213E,#533483);
+    background-size: 360px;
+    background-position: right bottom;
+}
+#button{
+     background-color: #E94560; 
+    
+}
