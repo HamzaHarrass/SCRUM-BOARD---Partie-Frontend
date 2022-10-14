@@ -31,3 +31,19 @@
     color: #E94560;
     border-radius: 3px;
 }
+.cancel{
+     background-color: white;
+    color: #E94560;
+}
+:hover .cancel{
+    background-color: white;
+    color: #E94560;
+}
+.save{
+    background-color: #E94560;
+    color: white;
+}
+:hover .save{
+    background-color: #E94560;
+    color: white;
+}
