@@ -14,68 +14,89 @@ let Do = document.getElementById("done-tasks");
 console.log(Do);
 
 console.log(tasks);
+afficher();
 
-for (let i = 0; i < tasks.length; i++) {
-  xx = i + 1; 
-  if (tasks[i].status == "To Do") {
-   
-    to.innerHTML += `
-            <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
-            <div class="">
-            </div>
-            <div class="text-start ">
-                <div class="text-white  "><i
-                        class="bi bi-question-circle-fill text-success me-2"></i>${tasks[i].title}</div>
-                <div class="">
-                    <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
-                    <div class=" text-white ms-4"
-                        title="">${tasks[i].description}</div>
-                </div>
-            </div>
-            <div class="mt-2 ms-4 text-start">
-                <span class="hight p-1 me-2">${tasks[i].priority}</span>
-                <span class="feature p-1 ">${tasks[i].type}</span>
-            </div>
-        </button>  `;
-        
-  } else if (tasks[i].status == "In Progress") {
-    Po.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
-    <div class="">
-        <i class=""></i>
-    </div>
-    <div class="text-start">
-        <div class="text-white "><i
-                class="spinner-border  spinner-border-sm  text-success me-2"></i>${tasks[i].title}</div>
-        <div class="">
-            <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
-            <div class="text-white ms-4" title="">${tasks[i].description}</div>
-        </div>
-        <div class="mt-2 ms-4 text-start">
-            <span class="hight p-1 me-2 ">${tasks[i].priority}</span>
-            <span class="feature p-1">${tasks[i].type}</span>
-        </div>
-    </div>
-</button> `;
-  } else if (tasks[i].status == "Done") {
 
-    Do.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
-    <div class="">
-        <i class=""></i>
-    </div>
-    <div class="text-start">
-        <div class="text-white "><i
-                class="bi bi-check-circle text-success me-2"></i>${tasks[i].title}</div>
-        <div class="">
-            <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
-            <div class="text-white ms-4" title="">${tasks[i].description}</div>
-        </div>
-        <div class="mt-2 ms-4 text-start">
-            <span class="hight p-1 me-2 ">${tasks[i].priority}</span>
-            <span class="feature p-1">${tasks[i].type}</span>
-        </div>
-    </div>
-</button> `;
+function afficher(){
+    todon=0;
+    inprogressn=0;
+    donetaskn=0;
+  for (let i = 0; i < tasks.length; i++) {
+    xx = i + 1; 
+    
+
+    if (tasks[i].status == "To Do") {
+     
+      to.innerHTML += `
+              <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
+              <div class="">
+              </div>
+              <div class="text-start">
+                  <div class="text-white  "><i
+                          class="bi bi-question-circle-fill text-success me-2"></i>${tasks[i].title}</div>
+                  <div class="">
+                      <div class="text-white  ms-4">#${xx} created in ${tasks[i].date}</div>
+                      <div class=" text-white ms-4" id="pargraph"
+                          title="">${tasks[i].description}</div>
+                  </div>
+              </div>
+              <div class="mt-2 ms-4 text-start">
+                  <span class="hight p-1 me-2">${tasks[i].priority}</span>
+                  <span class="feature p-1 ">${tasks[i].type}</span>
+              </div>
+          </button>  `;
+          todon++;
+         
+          
+    } else if (tasks[i].status == "In Progress") {
+      Po.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
+      <div class="">
+          <i class=""></i>
+      </div>
+      <div class="text-start">
+          <div class="text-white "><i
+                  class="spinner-border  spinner-border-sm  text-success me-2"></i>${tasks[i].title}</div>
+          <div class="">
+              <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
+              <div class="text-white ms-4" id="pargraph" title="">${tasks[i].description}</div>
+          </div>
+          <div class="mt-2 ms-4 text-start">
+              <span class="hight p-1 me-2 ">${tasks[i].priority}</span>
+              <span class="feature p-1">${tasks[i].type}</span>
+          </div>
+      </div>
+  </button> `; 
+  inprogressn++;
+
+   console.log(inprogressn);
+    } else if (tasks[i].status == "Done") {
+  
+      Do.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
+      <div class="">
+          <i class=""></i>
+      </div>
+      <div class="text-start">
+          <div class="text-white "><i
+                  class="bi bi-check-circle text-success me-2"></i>${tasks[i].title}</div>
+          <div class="">
+              <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
+              <div class="text-white ms-4" id="pargraph" title="">${tasks[i].description}</div>
+          </div>
+          <div class="mt-2 ms-4 text-start">
+              <span class="hight p-1 me-2 ">${tasks[i].priority}</span>
+              <span class="feature p-1">${tasks[i].type}</span>
+          </div>
+      </div>
+  </button> `;
+  donetaskn++
+  console.log(donetaskn);
+    }
   }
+document.getElementById("to-do-tasks-count").innerHTML=todon;
+let inprogres=document.getElementById("in-progress-tasks-count");
+inprogres.innerHTML=inprogressn;
+let donet=document.getElementById("done-tasks-count");
+donet.innerHTML=donetaskn;
 }
 
 // function  add (){
