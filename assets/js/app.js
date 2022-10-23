@@ -4,12 +4,6 @@
  *
  */
 
-// import {tasks} from "./data.js";
-
-// var myModal = document.getElementById("modal-task") ;
-// var backDrop = document.getElementsByClassName("modal-backdrop") ;
-
-
 xx = 0;
 let to = document.getElementById("to-do-tasks");
 console.log(to);
@@ -17,6 +11,9 @@ let Po = document.getElementById("in-progress-tasks");
 console.log(Po);
 let Do = document.getElementById("done-tasks");
 console.log(Do);
+
+let buttonSave = document.getElementById("buttonSave");
+let buttonEdit = document.getElementById("buttonEdit");
 
 console.log(tasks);
 afficher();
@@ -114,111 +111,88 @@ let donet=document.getElementById("done-tasks-count");
 donet.innerHTML=donetaskn;
 }
 
-// function  add (){
-//     let obj =
-//     'title': title.value,
-//     'type' : check(),
-//     'priodr' : priority.value,
-// }
-
-// function check(){
-//     let ck;
-//     for(var i=0 ; i <type.length;i++){
-//         if(type[i].checked){
-//             ck=type[i].value;
-//         }
-//     }
-//     return ck;
-// }
-
 function createTask() {
   // initialiser task form
   // Afficher le boutton save
   // Ouvrir modal form
   const inputTitle = document.getElementById("recipient-name").value; 
   const typeTask= document.querySelector("input[name='flexRadioDefault']:checked").value;   
-  const selectper= document.getElementById("Priority").value;   
-  const selectsta= document.getElementById("Status").value;   
+  const selectPriority= document.getElementById("Priority").value;   
+  const selectStatus= document.getElementById("Status").value;   
   const data= document.getElementById("Date").value;   
   const descrip= document.getElementById("message-text").value;   
 
   let task={
     'title' : inputTitle,
     'type'  : typeTask,
-    'priority' : selectper,
-    'status' : selectsta,
+    'priority' : selectPriority,
+    'status' : selectStatus,
     'data' : data,
     "description" : descrip
   }
-// console.log(task);
 tasks.push(task);
 console.log(tasks);
 console.log(task);
 $("#modal-task").modal('hide');
-// Swal.fire(
-//   'Good job!',
-//   'You clicked the button!',
-//   'success'
-// )
-// backDrop.remove() ;
-// backDrop.style.display = "none" ;
-// myModal.style.display = "none";
+
+   
 afficher();
 }
 
-function saveTask() {
-  // Recuperer task attributes a partir les champs input
-  // Créez task object
-  // Ajoutez object au Array
-  // refresh tasks
+function editTask(i) {
+  buttonSave.style.display = 'none';
+  buttonEdit.style.display = 'block';
+
+  
+  console.log(tasks[i]);
+ 
+  const inputTitle = document.getElementById("recipient-name"); 
+  const typeTask= document.querySelector("input[name='flexRadioDefault']:checked");   
+  const selectPriority= document.getElementById("Priority");   
+  const selectStatus= document.getElementById("Status");   
+  const data= document.getElementById("Date");   
+  const descrip= document.getElementById("message-text"); 
+  
+  inputTitle.value = tasks[i].title;
+  typeTask.value= tasks[i].type;
+  selectPriority.value= tasks[i].priority;
+  selectStatus.value= tasks[i].status;
+  data.value= tasks[i].date;
+  descrip.value= tasks[i].description;
+ 
+  buttonEdit.onclick=() => {
+    updateTask(i);
+  };
+
 }
 
-function editTask(element) {
-  // Initialisez task form
-  var buttonInfo = {
-    title : element.querySelector("#buttonTitle").innerText,
-    // type  : element.querySelector("input[name='flexRadioDefault']:checked").innerHTML,
-    priority : element.querySelector("#buttonPriority").innerText,
-    date : element.querySelector("#buttonDate").innerText,
-    type : element.querySelector("#buttonType").innerText,
-    description : element.querySelector("#buttonDescription").innerText,
-    
+function updateTask(i) {
+  const inputTitle = document.getElementById("recipient-name").value; 
+  const typeTask= document.querySelector("input[name='flexRadioDefault']:checked").value;   
+  const selectPriority= document.getElementById("Priority").value;   
+  const selectStatus= document.getElementById("Status").value;   
+  const data= document.getElementById("Date").value;   
+  const descrip= document.getElementById("message-text").value; 
+
+  let Task={
+    'title' : inputTitle,
+    'type'  : typeTask,
+    'priority' : selectPriority,
+    'status' : selectStatus,
+    'data' : data,
+    "description" : descrip
   }
-  console.log(buttonInfo.title);
-  console.log(buttonInfo.date);
-  console.log(buttonInfo.type);
-  console.log(buttonInfo.priority);
-  console.log(buttonInfo.description);
-  // Affichez updates
-  // Delete Button
-  // Définir l’index en entrée cachée pour l’utiliser en Update et Delete
-  // Definir FORM INPUTS
-  // Ouvrir Modal form
-}
-
-function updateTask() {
-  // GET TASK ATTRIBUTES FROM INPUTS
-  // Créez task object
-  // Remplacer ancienne task par nouvelle task
-  // Fermer Modal form
-  // Refresh tasks
-}
-
-function deleteTask(i) {
-  // Get index of task in the array
-  tasks.splice(i,1);
-  // Remove task from array by index splice function
-  // close modal form
-  // refresh tasks
+  tasks.splice(i,1,Task);
+  console.log(Task);
   afficher();
 }
 
-function initTaskForm() {
-  // Clear task form from data
-  // Hide all action buttons
-}
-function reloadTasks() {
-  // Remove tasks elements
-  // Set Task count
+function deleteTask(i) {
+  tasks.splice(i,1);
+  afficher();
 }
 
+function popupAddTask(){
+  buttonSave.style.display = 'block';
+  buttonEdit.style.display = 'none';
+}
