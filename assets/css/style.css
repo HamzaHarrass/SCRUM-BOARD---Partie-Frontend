@@ -51,11 +51,13 @@
 .save {
   background-color: #e94560;
   color: white;
+  border: 0;
 }
 
 :hover .save {
   background-color: #e94560;
   color: white;
+  border: 0;
 }
 /* #pargraph{
   display: -webkit-box;

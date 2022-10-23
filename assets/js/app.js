@@ -36,7 +36,7 @@ function afficher(){
     if (tasks[i].status == "To Do") {
      
       to.innerHTML += `
-              <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
+              <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12" onclick="editTask(${i})" data-bs-toggle="modal" data-bs-target="#modal-task">
               <div class="">
               </div>
               <div class="text-start">
@@ -46,7 +46,7 @@ function afficher(){
                   <div class="">
                       <div class="text-white  ms-4">#${xx} created in ${tasks[i].date}</div>
                       <div class=" text-white ms-4" id="pargraph"
-                          title="${tasks[i].description}">${tasks[i].description.slice(0,50)}...</div>
+                          title="${tasks[i].description}">${tasks[i].description.slice(0,70)}...</div>
                   </div>
               </div>
               <div class="mt-2 ms-4 text-start">
@@ -57,7 +57,7 @@ function afficher(){
           todon++;
           
     } else if (tasks[i].status == "In Progress") {
-      Po.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12">
+      Po.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12" onclick="editTask(${i})" data-bs-toggle="modal" data-bs-target="#modal-task">
       <div class="">
           <i class=""></i>
       </div>
@@ -67,7 +67,7 @@ function afficher(){
                   class="spinner-border  spinner-border-sm  text-success me-2"></i>${tasks[i].title}</div>
           <div class="">
               <div class="text-white ms-4">#${xx} created in ${tasks[i].date}</div>
-              <div class="text-white ms-4" id="pargraph" title="${tasks[i].description}">${tasks[i].description.slice(0,50)}...</div>
+              <div class="text-white ms-4" id="pargraph" title="${tasks[i].description}">${tasks[i].description.slice(0,70)}...</div>
             
           </div>
           <div class="mt-2 ms-4 text-start">
@@ -81,7 +81,7 @@ function afficher(){
    console.log(inprogressn);
     } else if (tasks[i].status == "Done") {
   
-      Do.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12" onclick="editTask(this)">
+      Do.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12" onclick="editTask(${i})" data-bs-toggle="modal" data-bs-target="#modal-task">
       <div class="">
           <i class=""></i>
       </div>
@@ -91,7 +91,7 @@ function afficher(){
                   class="bi bi-check-circle text-success me-2" ></i>${tasks[i].title}</div>
           <div class="">
               <div class="text-white ms-4">#${xx} created in <div id="buttonDate">${tasks[i].date}</div></div>
-              <div class="text-white ms-4" id="buttonDescription" title="${tasks[i].description}">${tasks[i].description.slice(0,50)}...</div>
+              <div class="text-white ms-4" id="buttonDescription" title="${tasks[i].description}">${tasks[i].description.slice(0,70)}...</div>
 
           </div>
           <div class="mt-2 ms-4 text-start">
@@ -152,7 +152,7 @@ function editTask(i) {
   const selectStatus= document.getElementById("Status");   
   const data= document.getElementById("Date");   
   const descrip= document.getElementById("message-text"); 
-  
+
   inputTitle.value = tasks[i].title;
   typeTask.value= tasks[i].type;
   selectPriority.value= tasks[i].priority;
