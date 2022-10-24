@@ -138,7 +138,6 @@ function editTask(i) {
   buttonEdit.style.display = 'block';
   buttonDelete.style.display = 'block';
 
- 
   const inputTitle = document.getElementById("recipient-name"); 
   const feature= document.getElementById("flexRadioDefault1"); 
   const bug= document.getElementById("flexRadioDefault2"); 
@@ -149,7 +148,7 @@ function editTask(i) {
 
   inputTitle.value = tasks[i].title;
 
-  if(tasks[i].type = "Feature"){
+  if(tasks[i].type == "Feature"){
     feature.checked = true ;
   }else {
     bug.checked = true ;
@@ -161,7 +160,6 @@ function editTask(i) {
  
   buttonEdit.onclick=() => {
     updateTask(i);
-    
   };
   buttonDelete.onclick=() => {
     deleteTask(i);
