@@ -6,11 +6,8 @@
 
 xx = 0;
 let to = document.getElementById("to-do-tasks");
-console.log(to);
 let Po = document.getElementById("in-progress-tasks");
-console.log(Po);
 let Do = document.getElementById("done-tasks");
-console.log(Do);
 
 let buttonSave = document.getElementById("buttonSave");
 let buttonEdit = document.getElementById("buttonEdit");
@@ -78,7 +75,6 @@ function afficher(){
   </button> `; 
   inprogressn++;
 
-   console.log(inprogressn);
     } else if (tasks[i].status == "Done") {
   
       Do.innerHTML += ` <button class="p-3 border-0  border-bottom border-white mt-2 color-trans col-12" onclick="editTask(${i})" data-bs-toggle="modal" data-bs-target="#modal-task">
@@ -101,7 +97,6 @@ function afficher(){
       </div>
   </button> `;
   donetaskn++
-  console.log(donetaskn);
     }
   }
 document.getElementById("to-do-tasks-count").innerHTML=todon;
@@ -117,9 +112,9 @@ function createTask() {
   // Ouvrir modal form
   const inputTitle = document.getElementById("recipient-name").value; 
   const typeTask= document.querySelector("input[name='flexRadioDefault']:checked").value;   
-  const selectPriority= document.getElementById("Priority").value;   
+  const selectPriority= document.getElementById("Priority").value;    
   const selectStatus= document.getElementById("Status").value;   
-  const data= document.getElementById("Date").value;   
+  const date= document.getElementById("Date").value;   
   const descrip= document.getElementById("message-text").value;   
 
   let task={
@@ -127,7 +122,7 @@ function createTask() {
     'type'  : typeTask,
     'priority' : selectPriority,
     'status' : selectStatus,
-    'data' : data,
+    'date' : date,
     "description" : descrip
   }
 tasks.push(task);
@@ -147,14 +142,20 @@ function editTask(i) {
   console.log(tasks[i]);
  
   const inputTitle = document.getElementById("recipient-name"); 
-  const typeTask= document.querySelector("input[name='flexRadioDefault']:checked");   
+  const feature= document.getElementById("flexRadioDefault1"); 
+  const bug= document.getElementById("flexRadioDefault2"); 
   const selectPriority= document.getElementById("Priority");   
   const selectStatus= document.getElementById("Status");   
   const data= document.getElementById("Date");   
   const descrip= document.getElementById("message-text"); 
 
   inputTitle.value = tasks[i].title;
-  typeTask.value= tasks[i].type;
+
+  if(tasks[i].type = "Feature"){
+    feature.checked = true ;
+  }else {
+    bug.checked = true ;
+  }
   selectPriority.value= tasks[i].priority;
   selectStatus.value= tasks[i].status;
   data.value= tasks[i].date;
@@ -167,6 +168,7 @@ function editTask(i) {
 }
 
 function updateTask(i) {
+  
   const inputTitle = document.getElementById("recipient-name").value; 
   const typeTask= document.querySelector("input[name='flexRadioDefault']:checked").value;   
   const selectPriority= document.getElementById("Priority").value;   
@@ -179,7 +181,7 @@ function updateTask(i) {
     'type'  : typeTask,
     'priority' : selectPriority,
     'status' : selectStatus,
-    'data' : data,
+    'date' : data,
     "description" : descrip
   }
   tasks.splice(i,1,Task);
@@ -193,6 +195,19 @@ function deleteTask(i) {
 }
 
 function popupAddTask(){
+
+  const inputTitle = document.getElementById("recipient-name"); 
+  const selectPriority= document.getElementById("Priority");    
+  const selectStatus= document.getElementById("Status");   
+  const data= document.getElementById("Date");   
+  const descrip= document.getElementById("message-text");  
+
+  inputTitle.value= "" 
+  selectPriority.value = "" 
+  selectStatus.value = "" 
+  data.value = "" 
+  descrip.value = "" 
+
   buttonSave.style.display = 'block';
   buttonEdit.style.display = 'none';
 }
