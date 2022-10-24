@@ -3,7 +3,6 @@
 */
 var tasks = [
     {
-        
         'title'         :   'Keep all the updated requirements in one place',
         'type'          :   'Feature',
         'priority'      :   'High',

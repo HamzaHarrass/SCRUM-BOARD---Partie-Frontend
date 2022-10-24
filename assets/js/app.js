@@ -13,7 +13,6 @@ let buttonSave = document.getElementById("buttonSave");
 let buttonEdit = document.getElementById("buttonEdit");
 let buttonDelete = document.getElementById("buttonDelete");
 
-console.log(tasks);
 afficher();
 
 
@@ -26,8 +25,8 @@ function afficher(){
     to.innerText = ""
     Po.innerText = ""
     Do.innerText = ""
-
   for (let i = 0; i < tasks.length; i++) {
+
     xx = i + 1; 
 
 
@@ -125,8 +124,6 @@ function createTask() {
     "description" : descrip
   }
 tasks.push(task);
-console.log(tasks);
-console.log(task);
 $("#modal-task").modal('hide');
 
    
@@ -185,7 +182,6 @@ function updateTask(i) {
     "description" : descrip
   }
   tasks.splice(i,1,Task);
-  console.log(Task);
   afficher();
 }
 
