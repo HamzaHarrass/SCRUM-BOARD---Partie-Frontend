@@ -11,6 +11,7 @@ let Do = document.getElementById("done-tasks");
 
 let buttonSave = document.getElementById("buttonSave");
 let buttonEdit = document.getElementById("buttonEdit");
+let buttonDelete = document.getElementById("buttonDelete");
 
 console.log(tasks);
 afficher();
@@ -37,7 +38,6 @@ function afficher(){
               <div class="">
               </div>
               <div class="text-start">
-              <i class="bi bi-x text-white me-5" onclick="deleteTask(${i})"></i>
                   <div class="text-white  "><i
                           class="bi bi-question-circle-fill text-success me-2"></i>${tasks[i].title}</div>
                   <div class="">
@@ -59,7 +59,6 @@ function afficher(){
           <i class=""></i>
       </div>
       <div class="text-start">
-            <i class="bi bi-x text-white" onclick="deleteTask(${i})"></i>
           <div class="text-white "><i
                   class="spinner-border  spinner-border-sm  text-success me-2"></i>${tasks[i].title}</div>
           <div class="">
@@ -82,7 +81,6 @@ function afficher(){
           <i class=""></i>
       </div>
       <div class="text-start">
-      <i class="bi bi-x text-white" onclick="deleteTask(${i})"></i>
           <div class="text-white " id="buttonTitle"><i
                   class="bi bi-check-circle text-success me-2" ></i>${tasks[i].title}</div>
           <div class="">
@@ -98,6 +96,7 @@ function afficher(){
   </button> `;
   donetaskn++
     }
+    
   }
 document.getElementById("to-do-tasks-count").innerHTML=todon;
 let inprogres=document.getElementById("in-progress-tasks-count");
@@ -137,9 +136,8 @@ afficher();
 function editTask(i) {
   buttonSave.style.display = 'none';
   buttonEdit.style.display = 'block';
+  buttonDelete.style.display = 'block';
 
-  
-  console.log(tasks[i]);
  
   const inputTitle = document.getElementById("recipient-name"); 
   const feature= document.getElementById("flexRadioDefault1"); 
@@ -163,8 +161,12 @@ function editTask(i) {
  
   buttonEdit.onclick=() => {
     updateTask(i);
+    
   };
-
+  buttonDelete.onclick=() => {
+    deleteTask(i);
+    
+  };
 }
 
 function updateTask(i) {
@@ -192,6 +194,7 @@ function updateTask(i) {
 function deleteTask(i) {
   tasks.splice(i,1);
   afficher();
+  
 }
 
 function popupAddTask(){
@@ -209,5 +212,6 @@ function popupAddTask(){
   descrip.value = "" 
 
   buttonSave.style.display = 'block';
+  buttonDelete.style.display = 'none';
   buttonEdit.style.display = 'none';
 }
