@@ -1,3 +1,6 @@
+<?php 
+	include('./assets/php/scripts.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +58,9 @@
 
 						<div class=" " id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
-
+							<?php 
+							getTasks(1);
+							?>
 						</div>
 
 					</div>
@@ -67,8 +72,14 @@
 						</div>
 						<div class="" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
+							
+							<?php 
+							getTasks(2);
+							?>
 
-
+							
+						
+							
 						</div>
 					</div>
 				</div>
@@ -81,8 +92,9 @@
 						</div>
 						<div class=" " id="done-tasks">
 							<!-- DONE TASKS HERE -->
-							
-						
+							<?php 
+							getTasks(3);
+							?>
 						</div>
 					</div>
 				</div>
@@ -111,20 +123,21 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
+				<form action="./assets/php/scripts.php" method="post">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label text-white">Title</label>
-						<input type="text" class="form-control" id="recipient-name">
+						<input type="text" name="title" class="form-control" id="recipient-name">
 					</div>
 					<div class="mb-3">
 						<label for="" class="col-form-label text-white">Type</label>
 						<div class="form-check ms-3">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Feature" checked>
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1" checked>
 							<label class="form-check-label text-white" for="flexRadioDefault1">
 								Feature
 							</label>
 						</div>
 						<div class="form-check ms-3">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Bug">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="2">
 							<label class="form-check-label text-white" for="flexRadioDefault2">
 								Bug
 							</label>
@@ -132,41 +145,44 @@
 					</div>
 					<div class="mb-3">
 						<label for="Priority" class="col-form-label text-white">Priority</label>
-						<select class="form-select " aria-label="Default select example" id="Priority">
+						<select class="form-select " name="priority_id" aria-label="Default select example" id="Priority">
 							<option value="" selected>Please select</option>
-							<option value="High">High</option>
-							<option value="Medium">Medium</option>
-							<option value="Low">Low</option>
+							<option value="1">High</option>
+							<option value="2">Medium</option>
+							<option value="3">Low</option>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="Status" class="col-form-label text-white">Status</label>
-						<select class="form-select" aria-label="Default select example" id="Status">
+						<select class="form-select" name="statues_id" aria-label="Default select example" id="Status">
 							<option value="" selected>Please select</option>
-							<option value="To Do">To Do</option>
-							<option value="In Progress">In Progress</option>
-							<option value="Done">Done</option>
+							<option value="1">To Do</option>
+							<option value="2">In Progress</option>
+							<option value="3">Done</option>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="Date" class="col-form-label text-white">Date</label>
-						<input type="date" class="form-control" id="Date">
+						<input type="date" name="date" class="form-control" id="Date">
 					</div>
 					<div class="mb-3 ">
 						<label for="message-text" class="col-form-label text-white">Description</label>
-						<textarea class="form-control" id="message-text"></textarea>
+						<textarea class="form-control" name="descpription" id="message-text"></textarea>
 					</div>
-				</div>
-				<div class="modal-footer border-0">
-					<button type="button" class="btn btn-white" data-bs-dismiss="modal" >Cancel</button>
+					<div class="modal-footer border-0">
+				<button type="button" class="btn btn-white" data-bs-dismiss="modal" >Cancel</button>
 					<button type="button"class="btn btn-white save" data-bs-dismiss="modal" id="buttonEdit">update</button>
 					<button type="button"class="btn btn-white save" data-bs-dismiss="modal"  id="buttonDelete">delete</button>
-					<button type="button" onclick="createTask()" id="buttonSave"  class="btn  text-white save" >Save</button>
+					<button type="submit"  name="save" value="save" id="buttonSave"  class="btn  text-white save" >Save</button>
+					<input type="submit" name="save" >
 				</div>
+				</form>
+				</div>
+				
 			</div>
 		</div>
 	</div>
-
+ 
 
 
 
@@ -177,14 +193,9 @@
 
 
 	<!-- ================== BEGIN core-js ================== -->
-	<script src="./assets/js/vendor.min.js"></script>
-	<script src="./assets/js/app.min.js"></script>
-	<script src="./assets/js/data.js"></script>
-	<script src="./assets/js/app.js"></script>
+	<script src="./assets/js/scripts.js"></script>
 	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- ================== END core-js ================== -->
 </body>
 
