@@ -4,7 +4,7 @@
  *
  */
 
-xx = 0;
+id = 0;
 let to = document.getElementById("to-do-tasks");
 let Po = document.getElementById("in-progress-tasks");
 let Do = document.getElementById("done-tasks");
